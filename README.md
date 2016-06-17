@@ -25,7 +25,7 @@ version: '2'
 services:
   s3proxy:
     cpu_shares: 512
-    memory: 128m
+    mem_limit: 128m
     build: ./
     environment:
       SERVER_NAME: "s3proxy.example.com"
