@@ -24,7 +24,7 @@ You can run it using a docker-compose like this:
 version: '2'
 services:
   s3proxy:
-    cpu: 512
+    cpu_shares: 512
     memory: 128m
     build: ./
     environment:
