@@ -1,0 +1,12 @@
+[template]
+backend = "env"
+src = "proxy.tmpl"
+dest = "/etc/nginx/sites-enabled/proxy.conf"
+owner = "nginx"
+mode = "0644"
+keys = [
+  "SERVER_NAME",
+  "S3_BUCKET",
+  "AWS_ACCESS_KEY_ID",
+  "AWS_SECRET_ACCESS_KEY",
+]

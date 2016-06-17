@@ -1,0 +1,35 @@
+proxy_cache_lock on;
+proxy_cache_lock_timeout 60s;
+proxy_cache_path /data/cache levels=1:2 keys_zone=s3cache:10m max_size=1g;
+
+server {
+    server_name {{ getenv "SERVER_NAME" }};
+
+    listen 80;
+
+    gzip_min_length  2000;
+    gzip_proxied     any;
+
+    proxy_read_timeout 60s;
+    client_max_body_size 64M;
+
+    location / {
+        #if ($scheme = "http") {
+        #    rewrite ^ https://$server_name$request_uri? permanent;
+        #}
+
+        # https://skuid-conf-data.s3-us-west-2.amazonaws.com/registry/jenkins/docker.tgz
+        proxy_pass https://{{ getenv "S3_BUCKET" }}.s3-{{ getenv "REGION" }}.amazonaws.com;
+
+        aws_access_key {{ getenv "AWS_ACCESS_KEY_ID" }};
+        aws_secret_key {{ getenv "AWS_SECRET_ACCESS_KEY" }};
+        s3_bucket {{ getenv "S3_BUCKET" }};
+
+        proxy_set_header Authorization $s3_auth_token;
+        proxy_set_header x-amz-date $aws_date;
+
+        proxy_cache        s3cache;
+        proxy_cache_valid  200 302  24h;
+    }
+    access_log /dev/stdout main;
+}
