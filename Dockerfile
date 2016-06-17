@@ -16,7 +16,7 @@ RUN apt-get -y update \
     && curl -LO http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz \
     && tar zxf nginx-$NGINX_VERSION.tar.gz \
     && cd nginx-$NGINX_VERSION \
-    && git clone https://github.com/anomalizer/ngx_aws_auth.git \
+    && git clone -b AuthV2 https://github.com/anomalizer/ngx_aws_auth.git \
     && ./configure --with-http_ssl_module --add-module=ngx_aws_auth \
     && make install \
     && cd /tmp \
