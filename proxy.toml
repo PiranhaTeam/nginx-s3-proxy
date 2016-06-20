@@ -5,6 +5,7 @@ dest = "/etc/nginx/sites-enabled/proxy.conf"
 owner = "nginx"
 mode = "0644"
 keys = [
+  "CACHE_TIME",
   "SERVER_NAME",
   "S3_BUCKET",
   "AWS_ACCESS_KEY_ID",

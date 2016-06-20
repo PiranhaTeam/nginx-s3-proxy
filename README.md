@@ -8,6 +8,7 @@ configuration and then starts nginx. You'll need to run your container with the
 following environment variables:
 
 ```
+CACHE_TIME
 SERVER_NAME
 S3_BUCKET
 REGION
@@ -28,6 +29,7 @@ services:
     mem_limit: 128m
     build: ./
     environment:
+      CACHE_TIME: "10m"
       SERVER_NAME: "s3proxy.example.com"
       S3_BUCKET: "your-conf-data"
       REGION: "us-west-2"

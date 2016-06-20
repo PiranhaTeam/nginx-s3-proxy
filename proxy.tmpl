@@ -1,6 +1,6 @@
 proxy_cache_lock on;
 proxy_cache_lock_timeout 60s;
-proxy_cache_path /data/cache levels=1:2 keys_zone=s3cache:10m max_size=1g;
+proxy_cache_path /data/cache levels=1:2 keys_zone=s3cache:{{ getenv "CACHE_TIME" }}  max_size=1g;
 
 server {
     server_name {{ getenv "SERVER_NAME" }};
@@ -18,7 +18,6 @@ server {
         #    rewrite ^ https://$server_name$request_uri? permanent;
         #}
 
-        # https://skuid-conf-data.s3-us-west-2.amazonaws.com/registry/jenkins/docker.tgz
         proxy_pass https://{{ getenv "S3_BUCKET" }}.s3-{{ getenv "REGION" }}.amazonaws.com;
 
         aws_access_key {{ getenv "AWS_ACCESS_KEY_ID" }};
