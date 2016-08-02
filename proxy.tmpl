@@ -13,6 +13,10 @@ server {
     proxy_read_timeout 60s;
     client_max_body_size 1M;
 
+    location = / {
+        return 302 https://about.commonsearch.org/;
+    }
+
     location / {
         #if ($scheme = "http") {
         #    rewrite ^ https://$server_name$request_uri? permanent;

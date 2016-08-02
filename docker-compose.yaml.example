@@ -6,7 +6,7 @@ services:
     build: ./
     environment:
       CACHE_TIME: "10y"
-      CACHE_SIZE: "900m"
+      CACHE_SIZE: "500g"
       SERVER_NAME: "dumps.commonsearch.org"
       S3_BUCKET: "dumps.commonsearch.org"
       REGION: "external-1"
