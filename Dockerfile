@@ -2,7 +2,7 @@ FROM debian:jessie
 
 WORKDIR /tmp
 
-ENV NGINX_VERSION 1.11.1
+ENV NGINX_VERSION 1.11.3
 RUN apt-get -y update \
     && apt-get -y install \
         curl \

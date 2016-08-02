@@ -6,6 +6,7 @@ owner = "nginx"
 mode = "0644"
 keys = [
   "CACHE_TIME",
+  "CACHE_SIZE",
   "SERVER_NAME",
   "S3_BUCKET",
   "AWS_ACCESS_KEY_ID",
