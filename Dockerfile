@@ -1,8 +1,8 @@
-FROM debian:jessie
+FROM debian:stretch
 
 WORKDIR /tmp
 
-ENV NGINX_VERSION 1.11.3
+ENV NGINX_VERSION 1.14.0
 RUN apt-get -y update \
     && apt-get -y install \
         curl \
@@ -29,7 +29,7 @@ RUN mkdir -p /data/cache
 RUN mkdir -p /etc/nginx/ssl /etc/nginx/sites-enabled \
     && cp /usr/local/nginx/conf/mime.types /etc/nginx/mime.types
 
-ENV CONFD_VERSION 0.11.0
+ENV CONFD_VERSION 0.15.0
 ENV CONFD_URL https://github.com/kelseyhightower/confd/releases/download/v$CONFD_VERSION/confd-$CONFD_VERSION-linux-amd64
 
 RUN wget --progress dot:mega $CONFD_URL -O /usr/local/bin/confd \
