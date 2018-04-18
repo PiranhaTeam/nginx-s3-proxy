@@ -26,7 +26,7 @@ RUN apt-get -y update \
     && cd /tmp \
     && rm -f nginx-$NGINX_VERSION.tar.gz \
     && rm -rf nginx-$NGINX_VERSION \
-    && apt-get purge -y curl git \
+    && apt-get purge -y git \
     && apt-get autoremove -y
 
 RUN mkdir -p /data/cache
