@@ -14,9 +14,9 @@ RUN apt-get -y update \
         wget \
         git \
         python2.7 \
-    && curl -O https://bootstrap.pypa.io/get-pip.py
-    && python2.7 get-pip.py
-    && pip install awscli    
+    && curl -O https://bootstrap.pypa.io/get-pip.py \
+    && python2.7 get-pip.py \
+    && pip install awscli \   
     && curl -LO http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz \
     && tar zxf nginx-$NGINX_VERSION.tar.gz \
     && cd nginx-$NGINX_VERSION \
